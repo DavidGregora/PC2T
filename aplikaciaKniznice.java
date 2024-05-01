@@ -22,6 +22,8 @@ public class aplikaciaKniznice {
 			System.out.println("8. Vypisat knihy daneho autora");
 			System.out.println("9. Vypisat knihy daneho zanru");
 			System.out.println("10. Vypisat vypozicane knihy s informaciou o type");
+			System.out.println("11. Ulozit knihu do suboru");
+			System.out.println("12. Pridat knihu zo suboru");
 			System.out.println("0. Ukoncit program");
 			
 			int volba = scanner.nextInt();
@@ -133,13 +135,35 @@ public class aplikaciaKniznice {
 					System.out.println("Vypozicane knihy s informaciou o type:");
 					kniznica.vypisatVypozicaneKnihyPodlaTypu();
 					break;
+				case 11:
+				    System.out.println("Zadajte nazov suboru, do ktoreho chcete ulozit knihu:");
+				    String nazovSuboru = scanner.nextLine();
+				    System.out.println("Zadajte nazov knihy, ktoru chcete ulozit do suboru:");
+				    String nazovKnihy = scanner.nextLine();
+				    boolean ulozena = kniznica.ulozDoSuboru(nazovSuboru, nazovKnihy);
+				    if (ulozena) {
+				        System.out.println("Kniha uspesne ulozena do suboru " + nazovSuboru + ".");
+				    } else {
+				        System.out.println("Kniha nebola ulozena do suboru.");
+				    }
+				    break;
+				case 12:
+				    System.out.println("Zadajte nazov suboru, z ktoreho chcete nacitat knihu:");
+				    String nazovSuboru1 = scanner.nextLine();
+				    boolean pridanaKniha = kniznica.pridatNovuKnihuZoSuboru(nazovSuboru1);
+				    if (pridanaKniha) {
+				        System.out.println("Kniha uspesne pridana zo suboru " + nazovSuboru1 + ".");
+				    } else {
+				        System.out.println("Kniha nebola pridana zo suboru.");
+				    }
+				    break;
+
+			
 				default:
 					System.out.println("Neplatna volba. Skuste to znova.");
 				
 			}
-
-
-
+			
 		}
 
 	}
