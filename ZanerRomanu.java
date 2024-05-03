@@ -5,6 +5,12 @@ public enum ZanerRomanu {
     HISTORICKY,
     PSYCHOLOGICKY,
     ROMANTICKY,
-    SCI_FI
+    SCI_FI;
+	
+	@Override
+    public String toString() {
+        return this.name();
+    }
+
 
 }
