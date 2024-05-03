@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class aplikaciaKniznice {
 
 	public static void main(String[] args) {
@@ -55,10 +56,37 @@ public class aplikaciaKniznice {
 				        int rokVydania = scanner.nextInt();
 				        scanner.nextLine(); // absorb newline
 				        
-				        System.out.println("Zadajte zaner romanu:");
-				        String zanerRomanu = scanner.nextLine();
-				        
-				        roman novyRoman = new roman(nazovRomanu, autori, rokVydania, zanerRomanu);
+				        System.out.println("Vyberte žáner romanu:");
+		                        System.out.println("1. Detektívny");
+		                        System.out.println("2. Historický");
+		                        System.out.println("3. Psychologický");
+		                        System.out.println("4. Romantický");
+		                        System.out.println("5. Sci-Fi");
+		                        int volbaZanru = scanner.nextInt();
+		                        scanner.nextLine(); // absorb newline
+		                        ZanerRomanu zaner;
+		                        switch (volbaZanru) {
+		                            case 1:
+		                                zaner = ZanerRomanu.DETEKTIVNY;
+		                                break;
+		                            case 2:
+		                                zaner = ZanerRomanu.HISTORICKY;
+		                                break;
+		                            case 3:
+		                                zaner = ZanerRomanu.PSYCHOLOGICKY;
+		                                break;
+		                            case 4:
+		                                zaner = ZanerRomanu.ROMANTICKY;
+		                                break;
+		                            case 5:
+		                                zaner = ZanerRomanu.SCI_FI;
+		                                break;
+		                            default:
+		                                System.out.println("Neplatná voľba, nastavujem záner na Detektívny.");
+		                                zaner = ZanerRomanu.DETEKTIVNY;
+		                        }
+						        
+				        roman novyRoman = new roman(nazovRomanu, autori, rokVydania, zaner.name());
 				        kniznica.pridatNovuKnihu(novyRoman);
 				    } else if (typKnihy == 2) {
 				        System.out.println("Zadajte nazov ucebnice:");
@@ -128,9 +156,39 @@ public class aplikaciaKniznice {
 					break;
 				case 9:
 					System.out.println("Zadajte zaner knih, ktore chcete vypisat:");
-					String zaner = scanner.nextLine();
-					kniznica.vypisatKnihyPodlaZanru(zaner);
-					break;
+				    System.out.println("1. Detektívny");
+				    System.out.println("2. Historický");
+				    System.out.println("3. Psychologický");
+				    System.out.println("4. Romantický");
+				    System.out.println("5. Sci-Fi");
+				    int volbaZanru = scanner.nextInt();
+				    scanner.nextLine(); // absorb newline
+				    ZanerRomanu zaner = null;
+				    switch (volbaZanru) {
+				        case 1:
+				            zaner = ZanerRomanu.DETEKTIVNY;
+				            break;
+				        case 2:
+				            zaner = ZanerRomanu.HISTORICKY;
+				            break;
+				        case 3:
+				            zaner = ZanerRomanu.PSYCHOLOGICKY;
+				            break;
+				        case 4:
+				            zaner = ZanerRomanu.ROMANTICKY;
+				            break;
+				        case 5:
+				            zaner = ZanerRomanu.SCI_FI;
+				            break;
+				        default:
+				            System.out.println("Neplatná voľba, vypisujem všetky knihy.");
+				            kniznica.vypisatVsetkyKnihy();
+				            break;
+				    }
+				    if (volbaZanru >= 1 && volbaZanru <= 5) {
+				        kniznica.vypisatKnihyPodlaZanru(zaner);
+				    }
+				    break;
 				case 10:
 					System.out.println("Vypozicane knihy s informaciou o type:");
 					kniznica.vypisatVypozicaneKnihyPodlaTypu();
@@ -158,12 +216,13 @@ public class aplikaciaKniznice {
 				    }
 				    break;
 
-			
 				default:
 					System.out.println("Neplatna volba. Skuste to znova.");
 				
 			}
-			
+
+
+
 		}
 
 	}
