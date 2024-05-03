@@ -9,9 +9,9 @@ public class kniha {
 	private List<String> autori;
 	private int rokVydania;
 	private boolean jeDostupna;
-	private String zaner;
+	private ZanerRomanu zaner;
 
-	public kniha(String nazov, List<String> autori, int rokVydania, String zaner) {
+	public kniha(String nazov, List<String> autori, int rokVydania, ZanerRomanu zaner) {
 		this.nazov = nazov;
 		this.autori = autori;
 		this.rokVydania = rokVydania;
@@ -46,7 +46,7 @@ public class kniha {
 		this.jeDostupna = jeDostupna;
 	}
 	
-	public String getZaner() {
+	public ZanerRomanu getZaner() {
 		return zaner;
 	}
 	
