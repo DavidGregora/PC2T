@@ -10,6 +10,7 @@ public class aplikaciaKniznice {
 	public static void main(String[] args) {
 		spravcaKniznice kniznica = new spravcaKniznice();
 		Scanner scanner = new Scanner(System.in);
+		ZanerRomanu zaner = null;
 		
 		while (true) {
 			System.out.println("Vyberte akciu:");
@@ -63,8 +64,7 @@ public class aplikaciaKniznice {
 		                        System.out.println("4. Romantický");
 		                        System.out.println("5. Sci-Fi");
 		                        int volbaZanru = scanner.nextInt();
-		                        scanner.nextLine(); // absorb newline
-		                        ZanerRomanu zaner;
+		                        scanner.nextLine();
 		                        switch (volbaZanru) {
 		                            case 1:
 		                                zaner = ZanerRomanu.DETEKTIVNY;
@@ -85,8 +85,8 @@ public class aplikaciaKniznice {
 		                                System.out.println("Neplatná voľba, nastavujem záner na Detektívny.");
 		                                zaner = ZanerRomanu.DETEKTIVNY;
 		                        }
-						        
-				        roman novyRoman = new roman(nazovRomanu, autori, rokVydania, zaner.name());
+				        
+				        roman novyRoman = new roman(nazovRomanu, autori, rokVydania, zaner);
 				        kniznica.pridatNovuKnihu(novyRoman);
 				    } else if (typKnihy == 2) {
 				        System.out.println("Zadajte nazov ucebnice:");
@@ -162,8 +162,7 @@ public class aplikaciaKniznice {
 				    System.out.println("4. Romantický");
 				    System.out.println("5. Sci-Fi");
 				    int volbaZanru = scanner.nextInt();
-				    scanner.nextLine(); // absorb newline
-				    ZanerRomanu zaner = null;
+				    scanner.nextLine(); 
 				    switch (volbaZanru) {
 				        case 1:
 				            zaner = ZanerRomanu.DETEKTIVNY;
