@@ -139,7 +139,7 @@ public class spravcaKniznice {
 	    boolean najdena = false;
 	    List<kniha> zoznamKnihPodlaZanru = new ArrayList<>();
 	    for (kniha kniha : knihy) {
-	        if (kniha.getZaner().equals(zaner.name())) {
+	        if (kniha.getZaner().equals(zaner)) {
 	            zoznamKnihPodlaZanru.add(kniha);
 	            najdena = true;
 	        }
@@ -161,7 +161,6 @@ public class spravcaKniznice {
 			}
 		}
 	}
-	
 	public boolean ulozDoSuboru(String nazovSouboru, String nazovKnihy) {
 	    try {
 	        FileWriter fw = new FileWriter(nazovSouboru);
@@ -173,7 +172,8 @@ public class spravcaKniznice {
 	                out.write(String.join(", ", kniha.getAutori()) + "\n");
 	                out.write(kniha.getRokVydania() + "\n");
 	                out.write(kniha.isJeDostupna() + "\n");
-	                out.write(kniha.getZaner());
+	                //out.write(kniha.getZaner());
+	                out.write(kniha.getZaner().toString());
 	                knihaNajdena = true;
 	                break;
 	            }
@@ -223,11 +223,13 @@ public class spravcaKniznice {
 	        }
 	        boolean jeDostupna = Boolean.parseBoolean(dostupnostString);
 
-	        String zaner = in.readLine();
-	        if (zaner == null) {
+	        String zanerString = in.readLine();
+	        if (zanerString == null) {
 	            System.out.println("Chyba: Subor neobsahuje zaner knihy.");
 	            return false;
 	        }
+	        ZanerRomanu zaner = ZanerRomanu.valueOf(zanerString);
+	        
 
 	        kniha novaKniha = new kniha(nazov, autori, rokVydania, zaner);
 	        novaKniha.setJeDostupna(jeDostupna);
@@ -239,10 +241,13 @@ public class spravcaKniznice {
 	    } catch (NumberFormatException e) {
 	        System.out.println("Chyba pri prevode ciselných hodnot.");
 	        return false;
+	    } catch (IllegalArgumentException e) {
+	        System.out.println("Chyba: Neplatný žáner knihy v súbore.");
+	        return false;
 	    }
 
 	    return true;
 	}
 
-
 }
+
