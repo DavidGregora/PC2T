@@ -5,18 +5,18 @@ import java.util.List;
 public class roman extends kniha{
 	private String zaner;
 	
-	public roman(String nazov, List<String> autori, int rokVydania, String zaner) {
+	public roman(String nazov, List<String> autori, int rokVydania, ZanerRomanu zaner) {
 		super(nazov, autori, rokVydania, zaner);
-		this.zaner = zaner;
+		//this.zaner = zaner;
 	}
 
-	public String getZaner() {
-		return zaner;
+	/*public String getZanerAsString() {
+		return zaner.name();
 	}
 
 	public void setZaner(String zaner) {
 		this.zaner = zaner;
-	}
+	}*/
 	
 	
 
