@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 
@@ -103,6 +105,7 @@ public class spravcaKniznice {
 	}
 	
 	public void vypisatVsetkyKnihy() {
+		Collections.sort(knihy, (kniha1, kniha2) -> kniha1.getNazov().compareToIgnoreCase(kniha2.getNazov()));
 		for (kniha kniha : knihy) {
 			System.out.println(kniha.getInfo());
 		}
@@ -119,6 +122,7 @@ public class spravcaKniznice {
 	}
 	
 	public void vypisatKnihyPodlaAutora(String autor) {
+		Collections.sort(knihy, Comparator.comparingInt(kniha -> kniha.getRokVydania()));
 		boolean najdena = false;
 		for (kniha kniha : knihy) {
 			if (kniha.getAutori().contains(autor)) {
@@ -131,17 +135,23 @@ public class spravcaKniznice {
 		}
 	}
 	
-	public void vypisatKnihyPodlaZanru(String zaner) {
-		boolean najdena = false;
-		for (kniha kniha : knihy) {
-			if (kniha.getZaner().equals(zaner)) {
-				System.out.println(kniha.getInfo());
-				najdena = true;
-			}
-		}
-		if (!najdena) {
-			System.out.println("Kniha tohoto zanru nebola najdena.");
-		}
+	public void vypisatKnihyPodlaZanru(ZanerRomanu zaner) {
+	    boolean najdena = false;
+	    List<kniha> zoznamKnihPodlaZanru = new ArrayList<>();
+	    for (kniha kniha : knihy) {
+	        if (kniha.getZaner().equals(zaner.name())) {
+	            zoznamKnihPodlaZanru.add(kniha);
+	            najdena = true;
+	        }
+	    }
+	    if (najdena) {
+	        Collections.sort(zoznamKnihPodlaZanru, Comparator.comparing(kniha -> kniha.getNazov()));
+	        for (kniha kniha : zoznamKnihPodlaZanru) {
+	            System.out.println(kniha.getInfo());
+	        }
+	    } else {
+	        System.out.println("Kniha tohoto zanru nebola najdena.");
+	    }
 	}
 	
 	public void vypisatVypozicaneKnihyPodlaTypu() {
