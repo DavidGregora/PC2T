@@ -1,5 +1,10 @@
 package projekt;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,6 +16,7 @@ public class aplikaciaKniznice {
 		spravcaKniznice kniznica = new spravcaKniznice();
 		Scanner scanner = new Scanner(System.in);
 		ZanerRomanu zaner = null;
+		
 		
 		while (true) {
 			System.out.println("Vyberte akciu:");
@@ -215,15 +221,84 @@ public class aplikaciaKniznice {
 				    }
 				    break;
 
+				/* case 13:
+					vlozKnihu2();
+					break;
 				default:
 					System.out.println("Neplatna volba. Skuste to znova.");
 				
-			}
+			} */
 
 
 
 		}
 
 	}
+	//SQL SQL SQL SQL SQL SQL SQL SQL
+	
+	/*private static void vlozKnihu(Connection conn, String nazov, List<String> autori, int rokVydania, boolean jeDostupna, ZanerRomanu zaner) throws SQLException {
+		String autoritxt; autoritxt = String.join(", ", autori);
+		System.out.println(autoritxt);
+		String insertSQL = "INSERT INTO Knihy(nazov, autori, rokVydania,jeDostupna, zaner) VALUES(?,?,?,?,?)";
+		PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+    	   pstmt.setString(1, nazov);
+    	   pstmt.setString(2, autoritxt);
+    	   pstmt.setInt(3, rokVydania);
+    	   pstmt.setBoolean(4, jeDostupna);
+    	   pstmt.setInt(5, zaner.ordinal());
+    	   pstmt.executeUpdate();
+       }
+	 
+	
+	private static void vlozKnihu2()
+	{
+		Connection conn = null;
+		try {
+			//Class.forName("org.sqlite.JDBC");
+				//String url = "jdbc:sqlite:\\sqlite-jdbc-3.45.3.0.jar";
+            String url = "jdbc:sqlite:books.db";
+				//conn = DriverManager.getConnection("jdbc:sqlite:sqlite-jdbc-3.45.3.0.jar");
+				conn = DriverManager.getConnection(url);
+				//conn = DriverManager.getConnection("jdbc:sqlite:kniznica.db");
+				System.out.println("Databaza otvorena!");
+				//deleteTable(conn); //table musi existovat
+				String insertSQL = "INSERT INTO Knihy(nazov, autori, rokVydania,jeDostupna, zaner) VALUES('Test nazov','adam','1.1.2024',1,1)";
+				PreparedStatement pstmt = conn.prepareStatement(insertSQL);
 
+				conn = DriverManager.getConnection("jdbc:sqlite:kniznica.db");
+				System.out.println("Databaza otvorena!");
+				String autoritxt; autoritxt = String.join(", ", autori);
+				System.out.println(autoritxt);
+				String insertSQL = "INSERT INTO Knihy(nazov, autori, rokVydania,jeDostupna, zaner) VALUES(?,?,?,?,?)";
+				PreparedStatement pstmt = conn.prepareStatement(insertSQL);
+		    	   pstmt.setString(1, nazov);
+		    	   pstmt.setString(2, autoritxt );
+		    	   pstmt.setInt(3, rokVydania );
+		    	   pstmt.setBoolean(4, jeDostupna );
+		    	   pstmt.setInt(5, zaner.ordinal() );
+		    	   pstmt.executeUpdate();
+			
+				pstmt.executeUpdate();
+		}
+		catch (Exception ignored) {
+			System.out.println(ignored.getLocalizedMessage());
+			//nic to neurobi
+		}
+		//createTable(conn);
+		finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					System.out.println(e.getMessage());
+				}
+			}
+		}
+	}
+	
+	public static void createTable(Connection conn) throws SQLException {
+		// String createTablesq = " " +
+	} */
+}
 }

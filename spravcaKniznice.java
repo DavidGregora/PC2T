@@ -22,28 +22,6 @@ public class spravcaKniznice {
 	private List<kniha> knihy;
 	
 	
-	// private static final String URL = "jdbc:mysql://localhost:3306/database_name"; // Zmente database_name na názov vašej databázy
-	  //  private static final String USER = "username"; // Zmente username na vaše prihlasovacie meno
-	    //private static final String PASSWORD = "password"; // Zmente password na vaše heslo
-
-	  /*  public void saveBooksToDatabase(List<kniha> knihy) {
-	        String sql = "INSERT INTO books (nazov, autori, rok_vydania, dostupnost, zaner) VALUES (?, ?, ?, ?, ?)";
-	        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:myDB.db");
-	             PreparedStatement statement = connection.prepareStatement(sql)) {
-	            for (kniha kniha : knihy) {
-	                statement.setString(1, kniha.getNazov());
-	                statement.setString(2, String.join(", ", kniha.getAutori()));
-	                statement.setInt(3, kniha.getRokVydania());
-	                statement.setBoolean(4, kniha.isJeDostupna());
-	                statement.setString(5, kniha.getZaner());
-	                statement.executeUpdate();
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    */
-	
 	public spravcaKniznice() {
 		this.knihy = new ArrayList<>();
 	}
@@ -250,4 +228,3 @@ public class spravcaKniznice {
 	}
 
 }
-
