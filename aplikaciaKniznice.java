@@ -46,7 +46,7 @@ public class aplikaciaKniznice {
 				    System.out.println("1. Roman");
 				    System.out.println("2. Ucebnica");
 				    int typKnihy = scanner.nextInt();
-				    scanner.nextLine(); // absorb newline
+				    scanner.nextLine(); 
 				    
 				    if (typKnihy == 1) {
 				        System.out.println("Zadajte nazov romanu:");
@@ -61,7 +61,7 @@ public class aplikaciaKniznice {
 				        
 				        System.out.println("Zadajte rok vydania romanu:");
 				        int rokVydania = scanner.nextInt();
-				        scanner.nextLine(); // absorb newline
+				        scanner.nextLine(); 
 				        
 				        System.out.println("Vyberte žáner romanu:");
 		                        System.out.println("1. Detektívny");
@@ -107,11 +107,11 @@ public class aplikaciaKniznice {
 				        
 				        System.out.println("Zadajte rok vydania ucebnice:");
 				        int rokVydani = scanner.nextInt();
-				        scanner.nextLine(); // absorb newline
+				        scanner.nextLine(); 
 				        
 				        System.out.println("Zadajte rocnik, pre ktory je ucebnica urcena:");
 				        int rocnik = scanner.nextInt();
-				        scanner.nextLine(); // absorb newline
+				        scanner.nextLine(); 
 				        
 				        ucebnica novaUcebnice = new ucebnica(nazovUcebnice, autori, rokVydani, rocnik);
 				        kniznica.pridatNovuKnihu(novaUcebnice);
