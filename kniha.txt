@@ -1,5 +1,5 @@
-Banger
-Janko Hrasko
-1889
-false
-roman
+Kto chyta v zite
+David Jarome Salinger
+1951
+true
+HISTORICKY
